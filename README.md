@@ -47,3 +47,8 @@ If an attacker interacts with one of the fake services, OpenCanary can send aler
 - Sending text alerts using the Correlator tool, which links separate security events to detect attack patterns
 
 OpenCanary provides administrators with an effective early-warning system against potential intrusions.
+
+---
+
+### Disclaimer
+This project was conducted in a controlled environment. Unauthorized use of these techniques or tools outside such an environment may violate ethical guidelines and legal regulations.
