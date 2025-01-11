@@ -1,4 +1,4 @@
-#Examining an Open-Source Honeypot
+# Examining an Open-Source Honeypot
 
 [Examining an Open Source Honeypot](https://github.com/StephVergil/Examining-an-Open-Source-Honeypot/blob/main/Homework%2013%20Examining%20an%20Open-Source%20Honeypot-Stephanie%E2%80%99s%20MacBook%20Pro.docx)
 
