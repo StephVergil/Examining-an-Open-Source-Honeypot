@@ -1,54 +1,94 @@
 # Examining an Open-Source Honeypot
 
-[Examining an Open Source Honeypot Project](https://github.com/StephVergil/Examining-an-Open-Source-Honeypot/blob/main/Homework%2013%20Examining%20an%20Open-Source%20Honeypot-Stephanie%E2%80%99s%20MacBook%20Pro.docx)
+---
 
-## What ports does the configuration file enable, and what software is served from these ports?
+## Overview
 
-In the Linux Web Server configuration, OpenCanary enables several ports for emulating services:
+OpenCanary is an open-source honeypot tool designed to detect unauthorized access by emulating common services attackers target. By mimicking real server behaviors such as FTP, HTTP, SSH, and database services, OpenCanary can lure attackers into interacting with these fake services, triggering alerts and enabling system administrators to take swift action.
 
-- **FTP (Port 21):** Banner set to "FTP server ready."
-- **HTTP (Port 80):** Banner "Apache/2.2.22 (Ubuntu)" with optional login skins such as "basicLogin" or "nasLogin" mimicking a Synology NAS login page.
-- **SSH (Port 8022):** Banner "SSH-2.0-OpenSSH_5.1p1 Debian-4," designed to appear as a legitimate SSH service.
+This document details the functionality of OpenCanary, the services it emulates, and its practical applications in detecting intrusion attempts.
 
 ---
 
-## What are all the services that OpenCanary currently supports faking natively?
+## Ports Enabled and Software Emulated
 
-OpenCanary can natively emulate several common server types, including:
+In the Linux Web Server configuration, OpenCanary enables the following ports and emulates corresponding services:
 
-- Linux Web Server
-- Windows Server
-- MySQL Server
-- MSSQL Server
+- **FTP (Port 21):** Displays the banner "FTP server ready."
+- **HTTP (Port 80):** Provides the banner "Apache/2.2.22 (Ubuntu)" and optional login skins such as "basicLogin" or "nasLogin," which mimic Synology NAS login pages.
+- **SSH (Port 8022):** Simulates an SSH service with the banner "SSH-2.0-OpenSSH_5.1p1 Debian-4," making it appear as a legitimate SSH server.
 
-Each service can be customized with specific banners, ports, and login screens to enhance the illusion of genuine services, increasing the chances that attackers will interact with them.
-
----
-
-## Summary of OpenCanary
-
-**What is OpenCanary?**  
-OpenCanary is an open-source honeypot tool designed to detect unauthorized access by emulating common services attackers target. It works by setting up fake services such as FTP, HTTP, SSH, and server databases and triggering alerts whenever someone tries to access them. The goal is to make attackers think they are interacting with real services, allowing administrators to detect suspicious activity early.
-
-**Where would you set it up?**  
-OpenCanary is typically set up on a non-critical server, separate from essential infrastructure, to reduce the risk of operational disruptions.
-
-**How would you set it up?**  
-1. Install OpenCanary on the server.
-2. Adjust the `.opencanary.conf` configuration file to select the services to emulate and their respective ports.
-3. Run OpenCanary in the background to monitor for interactions with the fake services.
-
-**How would you be alerted upon intrusion?**  
-If an attacker interacts with one of the fake services, OpenCanary can send alerts through various methods:
-
-- Logging events
-- Sending emails
-- Triggering webhooks
-- Sending text alerts using the Correlator tool, which links separate security events to detect attack patterns
-
-OpenCanary provides administrators with an effective early-warning system against potential intrusions.
+These services are configured in the `.opencanary.conf` file to emulate real-world server behaviors, enticing attackers to interact with them.
 
 ---
 
-### Disclaimer
-This project was conducted in a controlled environment. Unauthorized use of these techniques or tools outside such an environment may violate ethical guidelines and legal regulations.
+## Services Supported by OpenCanary
+
+OpenCanary can natively emulate a wide variety of server types, including:
+
+- **Linux Web Server**
+- **Windows Server**
+- **MySQL Server**
+- **MSSQL Server**
+
+Each service can be customized with specific banners, ports, and login screens to increase realism, enhancing the likelihood of attacker interaction.
+
+---
+
+## Key Features
+
+1. **Customizable Services:** Choose which services to emulate and customize their appearance to mimic genuine systems.
+2. **Realistic Banners:** Configure banners to provide authentic-looking service details.
+3. **Alert Mechanisms:** Receive notifications via:
+   - Email alerts
+   - Log files
+   - Webhooks
+   - Text messages through Correlator (for identifying patterns in attack events)
+4. **Cross-Platform Compatibility:** Deployable on a variety of platforms, making it versatile for different environments.
+
+---
+
+## Setting Up OpenCanary
+
+**Where to Set It Up:**
+- Deploy OpenCanary on non-critical servers separate from production environments to minimize potential risks.
+
+**How to Set It Up:**
+1. Install OpenCanary on the server using package managers or source installation.
+2. Edit the `.opencanary.conf` configuration file to define which services to emulate and their respective ports.
+3. Start the OpenCanary service, allowing it to monitor interactions in the background.
+
+---
+
+## Alert Mechanisms Upon Intrusion
+
+When an attacker interacts with one of the emulated services, OpenCanary provides several alert options:
+
+- **Logging Events:** Tracks activity for analysis.
+- **Email Notifications:** Sends alerts to the administrator's email.
+- **Webhooks:** Triggers webhooks to integrate with external alerting systems.
+- **SMS Alerts:** Uses tools like Correlator to analyze and notify administrators of suspicious patterns.
+
+---
+
+## Practical Use Cases
+
+1. **Early Intrusion Detection:** Monitor unauthorized access attempts on non-critical systems.
+2. **Deception Strategies:** Divert attackers from production systems to honeypots.
+3. **Incident Response:** Gain insights into attacker behavior for better incident handling.
+
+---
+
+## Important Notes
+
+- OpenCanary is best used in a controlled environment for monitoring purposes.
+- Unauthorized deployment in non-controlled environments may violate ethical and legal guidelines.
+
+---
+
+## References
+
+- [OpenCanary Official Website](https://opencanary.org)
+- [GitHub Repository for OpenCanary](https://github.com/thinkst/opencanary)
+
+For more details, see the [Examining an Open-Source Honeypot Project](https://github.com/StephVergil/Examining-an-Open-Source-Honeypot/blob/main/Homework%2013%20Examining%20an%20Open-Source%20Honeypot-Stephanie%E2%80%99s%20MacBook%20Pro.docx).
